@@ -6,8 +6,8 @@ A modern Laravel-based SaaS admin dashboard built for portfolio and real-world b
 
 ## 📊 Features
 
-- Authentication system (Login/Register)
-- Role-based access (Admin/User)
+- Authentication system (Login / Register)
+- Role-based access (Admin / User)
 - User management (CRUD)
 - Dynamic dashboard analytics
 - Chart.js data visualization
@@ -31,7 +31,7 @@ A modern Laravel-based SaaS admin dashboard built for portfolio and real-world b
 
 This project simulates a real SaaS admin system similar to modern platforms like Stripe dashboards and internal business analytics tools.
 
-It was built to demonstrate:
+It demonstrates:
 
 - Backend architecture
 - Full-stack Laravel development
@@ -52,9 +52,11 @@ php artisan key:generate
 php artisan migrate
 npm run dev
 php artisan serve
+```
 
-👨‍💻 Author
+---
 
-Gustavo Leimbek
+## 👨‍💻 Author
+
+**Gustavo Leimbek**  
 Full-stack Developer
-
