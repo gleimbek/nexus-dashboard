@@ -176,7 +176,9 @@
 
         <nav class="nav-links">
             <a href="/dashboard">Dashboard</a>
-            <a href="/admin/users">Users</a>
+            @if (auth()->user()?->role === 'admin')
+                <a href="{{ route('admin.users') }}">Users</a>
+            @endif
             <a href="#">Analytics</a>
             <a href="#">Reports</a>
             <a href="#">Settings</a>

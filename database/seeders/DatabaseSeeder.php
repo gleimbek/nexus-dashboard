@@ -17,9 +17,17 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
+        // Demo accounts. Both use the factory's default password: "password".
+        User::factory()->create([
+            'name' => 'Admin User',
+            'email' => 'admin@example.com',
+        ])->forceFill(['role' => 'admin'])->save();
+
         User::factory()->create([
             'name' => 'Test User',
             'email' => 'test@example.com',
         ]);
+
+        User::factory(8)->create();
     }
 }

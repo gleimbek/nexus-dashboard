@@ -5,10 +5,6 @@ use Illuminate\Support\Facades\Route;
 use App\Models\User;
 use App\Http\Controllers\Admin\UserController;
 
-Route::get('/admin/users', [UserController::class, 'index'])
-    ->middleware(['auth'])
-    ->name('admin.users');
-
 Route::get('/', function () {
     return view('welcome');
 });
@@ -28,21 +24,12 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::delete('/admin/users/{user}', [App\Http\Controllers\Admin\UserController::class, 'destroy'])
-    ->middleware(['auth'])
-    ->name('admin.users.destroy');
-
-
-Route::get('/admin/users/{user}/edit', [App\Http\Controllers\Admin\UserController::class, 'edit'])
-    ->middleware(['auth'])
-    ->name('admin.users.edit');
-
-Route::put('/admin/users/{user}', [App\Http\Controllers\Admin\UserController::class, 'update'])
-    ->middleware(['auth'])
-    ->name('admin.users.update');
-
-Route::middleware(['auth', 'is_admin'])->group(function () {
-    Route::get('/admin/users', [App\Http\Controllers\Admin\UserController::class, 'index']);
+// Admin area: every route here requires a signed-in user with role "admin".
+Route::middleware(['auth', 'is_admin'])->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/users', [UserController::class, 'index'])->name('users');
+    Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('users.edit');
+    Route::put('/users/{user}', [UserController::class, 'update'])->name('users.update');
+    Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
 });
     
 Route::get('/about-project', function () {
